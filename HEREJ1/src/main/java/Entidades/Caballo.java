@@ -8,6 +8,6 @@ public class Caballo extends Animal {
 
     @Override
     public void alimentarse() {
-        System.out.println(nombre + "Se alimenta de: " + alimento);
+        System.out.println(nombre + " se alimenta de: " + alimento);
     }
 }
