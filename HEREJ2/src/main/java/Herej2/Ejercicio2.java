@@ -1,9 +1,9 @@
 package Herej2;
 
 import Entidades.Electrodomestico;
-import Entidades.Lavadora;
 import Servicio.ElectrodomesticoServicio;
 import Servicio.LavadoraServicio;
+import Servicio.TelevisorServicio;
 
 import java.util.Scanner;
 
@@ -15,6 +15,7 @@ public class Ejercicio2 {
 
         ElectrodomesticoServicio es = new ElectrodomesticoServicio();
         LavadoraServicio ls = new LavadoraServicio();
+        TelevisorServicio ts = new TelevisorServicio();
 
         System.out.println("Ingrese los datos del electrodomestico");
         System.out.println("Color:");
@@ -39,6 +40,21 @@ public class Ejercicio2 {
 
         Electrodomestico e1 = ls.crearLavadora(pesoL, letraL, colorL, carga);
         System.out.println(e1.toString());
+
+        System.out.println("Ingrese los datos del electrodomestico");
+        System.out.println("Color:");
+        String colorT = leer.next();
+        System.out.println("Letra de consumo:");
+        char letraT = leer.next().charAt(0);
+        System.out.println("Peso:");
+        Double pesoT = leer.nextDouble();
+        System.out.println("resolucion en pulgadas");
+        Double resolucion = leer.nextDouble();
+        System.out.println("Posee sintonizador TDT? S/N");
+        boolean sintonizador = (leer.next().equalsIgnoreCase("S"));
+
+        Electrodomestico e2 = ts.crearTelevisor(pesoT, letraT, colorT, resolucion, sintonizador);
+        System.out.println(e2.toString());
 
     }
 
