@@ -8,9 +8,45 @@ public class Televisor extends Electrodomestico {
     public Televisor() {
     }
 
-    public Televisor(Double precio, String color, char consumoEnergetico, Double peso, Double resolucion, boolean sintonizadorTDT) {
-        super(precio, color, consumoEnergetico, peso);
+    public Televisor(String color, char consumoEnergetico, Double peso, Double resolucion, boolean sintonizadorTDT) {
+        super(color, consumoEnergetico, peso);
         this.resolucion = resolucion;
         this.sintonizadorTDT = sintonizadorTDT;
+        precioFinal(resolucion, sintonizadorTDT);
     }
+
+    public Double getResolucion() {
+        return resolucion;
+    }
+
+    public void setResolucion(Double resolucion) {
+        this.resolucion = resolucion;
+    }
+
+    public boolean isSintonizadorTDT() {
+        return sintonizadorTDT;
+    }
+
+    public void setSintonizadorTDT(boolean sintonizadorTDT) {
+        this.sintonizadorTDT = sintonizadorTDT;
+    }
+
+    @Override
+    public String toString() {
+        return "Televisor{" +
+                "resolucion=" + resolucion +
+                ", sintonizadorTDT=" + sintonizadorTDT +
+                ", precio=" + precio +
+                ", color='" + color + '\'' +
+                ", consumoEnergetico=" + consumoEnergetico +
+                ", peso=" + peso +
+                '}';
+    }
+
+    public void precioFinal(Double resolucion, boolean sintonizadorTDT) {
+
+        this.precio *= ((resolucion > 40) ? 1.3d: 1d);
+        this.precio += ((sintonizadorTDT) ? 500d : 0d);
+    }
+
 }
