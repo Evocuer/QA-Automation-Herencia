@@ -1,10 +1,14 @@
 package Herej2;
 
 import Entidades.Electrodomestico;
+import Entidades.Lavadora;
+import Entidades.Televisor;
 import Servicio.ElectrodomesticoServicio;
 import Servicio.LavadoraServicio;
 import Servicio.TelevisorServicio;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ejercicio2 {
@@ -17,46 +21,37 @@ public class Ejercicio2 {
         LavadoraServicio ls = new LavadoraServicio();
         TelevisorServicio ts = new TelevisorServicio();
 
+        ArrayList <Electrodomestico> listaElec = new ArrayList<>();
 
+        Electrodomestico e1 = ls.crearLavadora(45d, 'B', "Negro", 20d);
+        Electrodomestico e2 = ls.crearLavadora(45d, 'B', "Blanco", 20d);
+        Electrodomestico e3 = ts.crearTelevisor(20d, 'A', "Negro", 45d, true);
+        Electrodomestico e4 = ts.crearTelevisor(15d, 'B', "Negro", 37d, true);
 
-        System.out.println("Ingrese los datos del electrodomestico");
-        System.out.println("Color:");
-        String color = leer.next();
-        System.out.println("Letra de consumo:");
-        char letra = leer.next().charAt(0);
-        System.out.println("Peso:");
-        Double peso = leer.nextDouble();
+        listaElec.add(e1);
+        listaElec.add(e2);
+        listaElec.add(e3);
+        listaElec.add(e4);
 
-        Electrodomestico e = es.crearElectrodomestico(peso,letra,color);
-        System.out.println(e.toString());
+        Double lavTotal = 0d;
+        Double tvTotal = 0d;
 
-        System.out.println("Ingrese los datosde la lavadora");
-        System.out.println("Color:");
-        String colorL = leer.next();
-        System.out.println("Letra de consumo:");
-        char letraL = leer.next().charAt(0);
-        System.out.println("Peso:");
-        Double pesoL = leer.nextDouble();
-        System.out.println("Carga:");
-        Double carga = leer.nextDouble();
+        for (Electrodomestico aux : listaElec) {
+            if (aux instanceof Lavadora) {
+                System.out.println("Lavadora " + "= " + aux.getPrecio());
+                lavTotal += aux.getPrecio();
+                continue;
+            }
 
-        Electrodomestico e1 = ls.crearLavadora(pesoL, letraL, colorL, carga);
-        System.out.println(e1.toString());
+            if (aux instanceof Televisor) {
+                System.out.println("Televisor " + "= " + aux.getPrecio());
+                tvTotal += aux.getPrecio();
+            }
+        }
 
-        System.out.println("Ingrese los datos del electrodomestico");
-        System.out.println("Color:");
-        String colorT = leer.next();
-        System.out.println("Letra de consumo:");
-        char letraT = leer.next().charAt(0);
-        System.out.println("Peso:");
-        Double pesoT = leer.nextDouble();
-        System.out.println("resolucion en pulgadas");
-        Double resolucion = leer.nextDouble();
-        System.out.println("Posee sintonizador TDT? S/N");
-        boolean sintonizador = (leer.next().equalsIgnoreCase("S"));
-
-        Electrodomestico e2 = ts.crearTelevisor(pesoT, letraT, colorT, resolucion, sintonizador);
-        System.out.println(e2.toString());
+        System.out.println("El costo total de los electrodomesticos es: $" + (lavTotal+tvTotal));
+        System.out.println("Lavadoras: $" + lavTotal);
+        System.out.println("Televisores: $" + tvTotal);
 
     }
 
