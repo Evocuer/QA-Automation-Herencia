@@ -17,6 +17,8 @@ public class Ejercicio2 {
         LavadoraServicio ls = new LavadoraServicio();
         TelevisorServicio ts = new TelevisorServicio();
 
+
+
         System.out.println("Ingrese los datos del electrodomestico");
         System.out.println("Color:");
         String color = leer.next();
