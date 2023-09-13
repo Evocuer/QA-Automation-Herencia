@@ -1,1 +1,4 @@
-/HEREJ4/.idea/
+# Directorios a ignorar
+
+*/.idea
+*/target
