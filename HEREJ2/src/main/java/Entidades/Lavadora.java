@@ -1,6 +1,6 @@
 package Entidades;
 
-public class Lavadora extends Electrodomestico{
+public class Lavadora extends Electrodomestico {
 
     private Double carga;
 
